@@ -17,15 +17,14 @@ def get_HTML_text(url):
         raise Exception("oops something went wrong")
 
 
-# get html txt of website
 response_page = get_HTML_text(
     "https://www.imdb.com/chart/boxoffice/?ref_=nv_ch_cht")
-# parse html
+
 response_page_soup = BeautifulSoup(response_page, "html.parser")
 # select table
 container = response_page_soup.find(
     "table", {"class": "chart full-width"})
-# select table kok tbody ko tr
+# select table trs
 trs = container.find("tbody").findAll("tr")
 
 # file open
